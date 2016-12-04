@@ -6,34 +6,13 @@ const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
 
 export default {
-  cache: DEBUG,
-
-  debug: DEBUG,
-
-  stats: {
-    colors: true,
-    reasons: DEBUG,
-    hash: VERBOSE,
-    version: VERBOSE,
-    timings: true,
-    chunks: VERBOSE,
-    chunkModules: VERBOSE,
-    cached: VERBOSE,
-    cachedAssets: VERBOSE,
-  },
-
-  entry: './src/app.js',
-
+  entry: './src/js/app.js',
   output: {
     publicPath: '/',
     sourcePrefix: '  ',
     path: path.join(__dirname, 'public'),
     filename: 'app.js',
   },
-
-  target: 'web',
-
-  devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
