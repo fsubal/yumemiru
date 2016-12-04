@@ -1,0 +1,27 @@
+{
+  "name": "yumemiru",
+  "version": "1.0.0",
+  "description": "Umbrellahead同人誌『夢見る少女じゃいられない』特設サイト",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Subal FUJIAKI",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "6.18.2",
+    "babel-loader": "6.2.8",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-stage-0": "6.16.0",
+    "jquery": "3.1.1",
+    "lodash": "4.17.2",
+    "slick-carousel": "1.6.0",
+    "stylus": "0.54.5",
+    "stylus-loader": "2.4.0",
+    "webpack": "1.13.3"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.16.0"
+  }
+}
