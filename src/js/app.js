@@ -1,15 +1,8 @@
 import 'babel-polyfill';
+
 import domready from 'domready';
-import { render } from 'react-dom';
+import IndexController from './controller/Index';
 
-import ComicViewerModal from './component/ComicViewerModal';
-
-import ScrollManager from './lib/ScrollManager';
-import GoogleAnalyticsClient from './lib/GoogleAnalyticsClient';
-
-domready(q => {
-    render(ComicViewerModal, document.querySelector('#modal'));
-
-    new ScrollManager().run();
-    new GoogleAnalyticsClient().run();
+domready(() => {
+    new IndexController().run();
 })();
