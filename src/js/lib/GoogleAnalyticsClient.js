@@ -3,7 +3,7 @@ export default class GoogleAnalyticsClient {
         this.gaClient = window.ga;
     }
 
-    send(action, category, label) {
+    send({ action, category, label }) {
         this.gaClient.send(action, category, label);
     }
 }

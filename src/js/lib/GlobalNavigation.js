@@ -1,36 +1,37 @@
 import $ from 'jquery';
-import ScrollPosition from '../lib/ScrollPosition';
-import ScrollActionType from '../lib/ScrollActionType';
+import position from '../lib/ScrollPosition';
+import action from '../lib/ScrollActionType';
 
 export default class GlobalNavigation {
     constructor() {
-        this.SELECTOR_STORY_SECTION = '.story-section';
-        this.SELECTOR_BROWSE_SECTION = '.browse-section';
-        this.SELECTOR_PURCHASE_SECTION = '.purchase-section';
-
-        this.POTISION = ScrollPosition;
-        this.ACTION_TYPE = ScrollActionType;
-
-        this.$body = $(document.body);
+        this.SCROLL_DURATION = 200;
+        this.$root = $('html, body');
         this.$menuContainer = $('#menu-container');
         this.$menuItems = $('#menu-container').find('.menu-item');
-
         this.init();
     }
 
     init() {
-        const { HERO_IMAGE__BOTTOM, BROWSE_SECTION__TOP, PURCHASE_SECTION__TOP } = this.POSITION;
-        
-        $menuItems.find(this.SELECTOR_STORY_SECTION).on('click', () => {
-            this.$body.scrollTo(HERO_IMAGE__BOTTOM);
+        $menuItems.find('.story-section').on('click', () => {
+            this.scrollTo(position.HERO_IMAGE__BOTTOM);
         });
 
-        $menuItems.find(this.SELECTOR_BROWSE_SECTION).on('click', () => {
-            this.$body.scrollTo(BROWSE_SECTION__TOP);
+        $menuItems.find('.browse-section').on('click', () => {
+            this.scrollTo(position.BROWSE_SECTION__TOP);
         });
 
-        $menuItems.find(this.SELECTOR_PURCHASE_SECTION).on('click', () => {
-            this.$body.scrollTo(PURCHASE_SECTION__TOP);
+        $menuItems.find('.purchase-section').on('click', () => {
+            this.scrollTo(position.PURCHASE_SECTION__TOP);
+        });
+    }
+
+    scrollTo(position) {
+        // TODO: bodyのdata属性に状態持たせるのやめる…
+        document.body.dataset.isAnimating = true;
+        this.$root.animate({
+            scrollTop: position
+        }, this.SCROLL_DURATION, () => {
+            delete document.body.dataset.isAnimating;
         });
     }
 
@@ -48,22 +49,20 @@ export default class GlobalNavigation {
     }
 
     update(actionType) {
-        const { ENTER_HERO_IMAGE, ENTER_STORY_SECTION, ENTER_BROWSE_SECTION, ENTER_PURCHASE_SECTION, PASS_PURCHASE_SECTION } = this.ACTION_TYPE;
-
         switch (actionType) {
-            case PASS_PURCHASE_SECTION:
+            case action.PASS_PURCHASE_SECTION:
                 this.hide();
                 break;
-            case ENTER_PURCHASE_SECTION: 
+            case action.ENTER_PURCHASE_SECTION: 
                 this.renderChosen(2);
                 break;
-            case ENTER_BROWSE_SECTION:
+            case action.ENTER_BROWSE_SECTION:
                 this.renderChosen(1);
                 break;
-            case ENTER_STORY_SECTION: 
+            case action.ENTER_STORY_SECTION: 
                 this.renderChosen(0);
                 break;
-            case ENTER_HERO_IMAGE: 
+            case action.ENTER_HERO_IMAGE: 
                 this.hide();
                 break;
         }

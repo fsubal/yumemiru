@@ -18,15 +18,13 @@ export default class IndexController {
     run () {
         this.addEventSender();
         this.scrollManager.run();
-
         render(ComicViewerModal, this.$modalContainer[0]);
     }
 
     addEventSender() {
-        $().click(e => {
+        $('.ga-send-event').on('click', () => {
             const { action, category, label } = e.currentTarget.dataset;
-
-            this.gaClient.send(action, category, label); 
+            this.gaClient.send({ action, category, label }); 
         });
     }
 }
