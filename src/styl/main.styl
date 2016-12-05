@@ -1,6 +1,38 @@
 @charset 'utf-8'
+@import 'normalize'
 
-@import "normalize"
+/* settings */
+@font-face
+  font-family 'YuGothic B'
+  src local(Yu Gothic Bold)
 
+font-weight-bold()
+	font-weight 500
+	font-family "'Helvetica Neue', Helvatica, Arial, YuGothic, 'YuGothic M', 'メイリオ', sans-serif"
+
+font-weight-normal()
+	font-weight normal
+	font-family "'Helvetica Neue', Helvatica, Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif"
+
+// responsive-setting
+iphone-5   = "screen and (max-width: 320px)"
+smartphone = "screen and (max-width: 414px)"
+tablet     = "screen and (max-width: 768px)"
+pc         = "screen and (min-width: 769px)"
+
+/* elements */
 body
+	@include font-weight-normal;
 	position relative
+
+.hero-image
+	display flex
+	position relative
+	padding 20px 10px
+
+	.thumbnail
+		width 100px
+		margin-right 15px
+
+	.description
+		flex 1

@@ -22871,7 +22871,7 @@
       _createClass(IndexController, [{
           key: 'run',
           value: function run() {
-              this.addEventSender();
+              // this.addEventSender();
               this.scrollManager.run();
               (0, _reactDom.render)(_ComicViewerModal2.default, this.$modalContainer[0]);
           }
