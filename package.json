@@ -4,7 +4,7 @@
   "description": "Umbrellahead同人誌『夢見る少女じゃいられない』特設サイト",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "compile": "./node_modules/.bin/webpack --progress"
   },
   "author": "Subal FUJIAKI",
   "license": "ISC",

@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import { render } from 'react-dom';
 
-import ComicViewerModal from './component/ComicViewerModal';
-import ScrollManager from './lib/ScrollManager';
-import GoogleAnalyticsClient from './lib/GoogleAnalyticsClient';
+import ComicViewerModal from '../Component/ComicViewerModal';
+import ScrollManager from '../lib/ScrollManager';
+import GoogleAnalyticsClient from '../lib/GoogleAnalyticsClient';
 
 export default class IndexController {
     constructor() {

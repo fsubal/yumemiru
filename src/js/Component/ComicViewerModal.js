@@ -4,7 +4,7 @@ import { Component, PropTypes, createElement as c } from 'react';
 
 export default class ComicViewerModal extends Component {
     constructor() {
-
+        super();
     }
 
     componentDidMount() {
