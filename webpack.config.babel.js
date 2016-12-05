@@ -25,12 +25,12 @@ export default {
   ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js'],
   },
 
   module: {
     loaders: [
-      { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
+      { test: /\.js$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
     ],
   },
 };
