@@ -10,7 +10,7 @@ export default {
   output: {
     publicPath: '/',
     sourcePrefix: '  ',
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'public/js'),
     filename: 'app.js',
   },
 
@@ -31,7 +31,6 @@ export default {
   module: {
     loaders: [
       { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
-      { test: /\.styl$/, loaders: ['style?useable', `css?${DEBUG ? 'sourceMap' : 'minimize'}`, 'stylus'] },
     ],
   },
 };

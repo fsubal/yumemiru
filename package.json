@@ -4,7 +4,9 @@
   "description": "Umbrellahead同人誌『夢見る少女じゃいられない』特設サイト",
   "main": "index.js",
   "scripts": {
-    "compile": "./node_modules/.bin/webpack --progress"
+    "compile-js": "./node_modules/.bin/webpack --progress",
+    "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl ./public/css/main.css",
+    "compile": "npm run compile-css && npm run compile-js"
   },
   "author": "Subal FUJIAKI",
   "license": "ISC",
@@ -25,7 +27,6 @@
     "react-dom": "15.4.1",
     "slick-carousel": "1.6.0",
     "stylus": "0.54.5",
-    "stylus-loader": "2.4.0",
     "webpack": "1.13.3"
   },
   "dependencies": {

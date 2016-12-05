@@ -22944,16 +22944,22 @@
               $menuItems.find('.story-section').on('click', function () {
                   var position = scrollPosition.calc();
                   _this.scrollTo(position.heroImage__Bottom);
+
+                  _this.trigger(_ScrollActionType2.default.ENTER_STORY_SECTION);
               });
 
               $menuItems.find('.browse-section').on('click', function () {
                   var position = scrollPosition.calc();
                   _this.scrollTo(position.browseSection__Top);
+
+                  _this.trigger(_ScrollActionType2.default.ENTER_BROWSE_SECTION);
               });
 
               $menuItems.find('.purchase-section').on('click', function () {
                   var position = scrollPosition.calc();
                   _this.scrollTo(position.purchaseSection__Top);
+
+                  _this.trigger(_ScrollActionType2.default.ENTER_PURCHASE_SECTION);
               });
           }
       }, {
@@ -22968,16 +22974,17 @@
               });
           }
       }, {
-          key: 'hide',
-          value: function hide() {
-              this.$menuContainer.addClass('--hidden');
+          key: 'sticky',
+          value: function sticky(shouldBeSticky) {
+              if (shouldBeSticky) {
+                  !this.$menuContainer.hasClass('--sticky') && this.$menuContainer.addClass('--sticky');
+              } else {
+                  this.$menuContainer.hasClass('--sticky') && this.$menuContainer.removeClass('--sticky');
+              }
           }
       }, {
           key: 'renderChosen',
           value: function renderChosen(i) {
-              if (this.$menuContainer.hasClass('--hidden')) {
-                  this.$menuContainer.removeClass('--hidden');
-              }
               this.$menuItems.removeClass('--chosen');
               this.$menuItems.eq(i).addClass('--chosen');
           }
@@ -22988,20 +22995,20 @@
           key: 'trigger',
           value: function trigger(actionType) {
               switch (actionType) {
-                  case _ScrollActionType2.default.PASS_PURCHASE_SECTION:
-                      this.hide();
-                      break;
                   case _ScrollActionType2.default.ENTER_PURCHASE_SECTION:
+                      this.sticky(true);
                       this.renderChosen(2);
                       break;
                   case _ScrollActionType2.default.ENTER_BROWSE_SECTION:
+                      this.sticky(true);
                       this.renderChosen(1);
                       break;
                   case _ScrollActionType2.default.ENTER_STORY_SECTION:
+                      this.sticky(true);
                       this.renderChosen(0);
                       break;
                   case _ScrollActionType2.default.ENTER_HERO_IMAGE:
-                      this.hide();
+                      this.sticky(false);
                       break;
               }
           }

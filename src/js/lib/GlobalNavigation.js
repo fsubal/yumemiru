@@ -46,9 +46,9 @@ export default class GlobalNavigation {
 
     sticky(shouldBeSticky) {
         if (shouldBeSticky) {
-            this.$menuContainer.addClass('--sticky');
+            !this.$menuContainer.hasClass('--sticky') && this.$menuContainer.addClass('--sticky');
         } else {
-            this.$menuContainer.removeClass('--sticky');
+            this.$menuContainer.hasClass('--sticky') && this.$menuContainer.removeClass('--sticky');
         }
     }
 
