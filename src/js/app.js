@@ -5,4 +5,4 @@ import IndexController from './controller/Index';
 
 domready(() => {
     new IndexController().run();
-})();
+});

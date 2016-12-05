@@ -10,6 +10,8 @@ export default class ScrollManager {
         this.THROTTLE_INTERVAL = 24;
         this.$root = $('html, body');
         this.globalNavigation = new GlobalNavigation();
+
+        this.run();
     }
 
     run() {

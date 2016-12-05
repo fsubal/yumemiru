@@ -6,27 +6,27 @@ export default class GlobalNavigation {
     constructor() {
         this.SCROLL_DURATION = 200;
         this.$root = $('html, body');
-        this.$menuContainer = $('#menu-container');
-        this.$menuItems = $('#menu-container').find('.menu-item');
+        this.$menuContainer = $('#global-navigation');
+        this.$menuItems = $('#global-navigation').find('.menu-item');
         this.init();
     }
 
     init() {
-        $menuItems.find('.story-section').on('click', () => {
+        this.$menuItems.find('.story-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.heroImage__Bottom);
 
             this.trigger(action.ENTER_STORY_SECTION);
         });
 
-        $menuItems.find('.browse-section').on('click', () => {
+        this.$menuItems.find('.browse-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.browseSection__Top);
 
             this.trigger(action.ENTER_BROWSE_SECTION);
         });
 
-        $menuItems.find('.purchase-section').on('click', () => {
+        this.$menuItems.find('.purchase-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.purchaseSection__Top);
 
