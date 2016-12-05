@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile-js": "./node_modules/.bin/webpack --progress",
-    "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl ./public/css/main.css",
+    "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl -o ./public/css/main.css",
     "compile": "npm run compile-css && npm run compile-js"
   },
   "author": "Subal FUJIAKI",
