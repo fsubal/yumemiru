@@ -14,27 +14,27 @@ export default class GlobalNavigation {
     init() {
         this.$menuItems.find('.story-section').on('click', () => {
             const position = scrollPosition.calc();
-            this.scrollTo(position.heroImage__Bottom);
+            this.triggerScroll(position.heroImage__Bottom);
 
             this.trigger(action.ENTER_STORY_SECTION);
         });
 
         this.$menuItems.find('.browse-section').on('click', () => {
             const position = scrollPosition.calc();
-            this.scrollTo(position.browseSection__Top);
+            this.triggerScroll(position.browseSection__Top);
 
             this.trigger(action.ENTER_BROWSE_SECTION);
         });
 
         this.$menuItems.find('.purchase-section').on('click', () => {
             const position = scrollPosition.calc();
-            this.scrollTo(position.purchaseSection__Top);
+            this.triggerScroll(position.purchaseSection__Top);
 
             this.trigger(action.ENTER_PURCHASE_SECTION);
         });
     }
 
-    scrollTo(position) {
+    triggerScroll(position) {
         // TODO: bodyのdata属性に状態持たせるのやめる…
         document.body.dataset.isAnimating = true;
         this.$root.animate({

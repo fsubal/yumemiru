@@ -59,7 +59,7 @@
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   (0, _domready2.default)(function () {
-      new _Index2.default().run();
+      new _Index2.default();
   });
 
 /***/ },
@@ -13583,19 +13583,16 @@
           this.scrollManager = new _ScrollManager2.default();
           this.comicViewerModal = new _ComicViewerModal2.default();
           this.$modalContainer = (0, _jquery2.default)('#modal-container');
+
+          // this.addEventSender();
       }
 
       _createClass(IndexController, [{
-          key: 'run',
-          value: function run() {
-              // this.addEventSender();
-          }
-      }, {
           key: 'addEventSender',
           value: function addEventSender() {
               var _this = this;
 
-              (0, _jquery2.default)('.ga-send-event').on('click', function () {
+              (0, _jquery2.default)('.ga-send-event').on('click', function (e) {
                   var _e$currentTarget$data = e.currentTarget.dataset,
                       action = _e$currentTarget$data.action,
                       category = _e$currentTarget$data.category,
@@ -13722,7 +13719,7 @@
           }
       }, {
           key: 'scrollTo',
-          value: function scrollTo(position) {
+          value: function scrollTo(position, action) {
               // TODO: bodyのdata属性に状態持たせるのやめる…
               document.body.dataset.isAnimating = true;
               this.$root.animate({
