@@ -15,16 +15,22 @@ export default class GlobalNavigation {
         $menuItems.find('.story-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.heroImage__Bottom);
+
+            this.trigger(action.ENTER_STORY_SECTION);
         });
 
         $menuItems.find('.browse-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.browseSection__Top);
+
+            this.trigger(action.ENTER_BROWSE_SECTION);
         });
 
         $menuItems.find('.purchase-section').on('click', () => {
             const position = scrollPosition.calc();
             this.scrollTo(position.purchaseSection__Top);
+
+            this.trigger(action.ENTER_PURCHASE_SECTION);
         });
     }
 
@@ -38,14 +44,15 @@ export default class GlobalNavigation {
         });
     }
 
-    hide() {
-        this.$menuContainer.addClass('--hidden');
+    sticky(shouldBeSticky) {
+        if (shouldBeSticky) {
+            this.$menuContainer.addClass('--sticky');
+        } else {
+            this.$menuContainer.removeClass('--sticky');
+        }
     }
 
     renderChosen(i) {
-        if (this.$menuContainer.hasClass('--hidden')) {
-            this.$menuContainer.removeClass('--hidden');
-        }
         this.$menuItems.removeClass('--chosen');
         this.$menuItems.eq(i).addClass('--chosen');
     }
@@ -53,20 +60,20 @@ export default class GlobalNavigation {
     // TODO: EventEmitter入れる
     trigger(actionType) {
         switch (actionType) {
-            case action.PASS_PURCHASE_SECTION:
-                this.hide();
-                break;
             case action.ENTER_PURCHASE_SECTION: 
+                this.sticky(true);
                 this.renderChosen(2);
                 break;
             case action.ENTER_BROWSE_SECTION:
+                this.sticky(true);
                 this.renderChosen(1);
                 break;
             case action.ENTER_STORY_SECTION: 
+                this.sticky(true);
                 this.renderChosen(0);
                 break;
             case action.ENTER_HERO_IMAGE: 
-                this.hide();
+                this.sticky(false);
                 break;
         }
     }
