@@ -13,7 +13,7 @@ export default class IndexController {
     }
 
     run () {
-        this.addEventSender();
+        // this.addEventSender();
         this.scrollManager.run();
         render(ComicViewerModal, this.$modalContainer[0]);
     }
