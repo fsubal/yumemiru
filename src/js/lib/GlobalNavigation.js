@@ -58,7 +58,7 @@ export default class GlobalNavigation {
     }
 
     // TODO: EventEmitter入れる
-    trigger(actionType) {
+    emit(actionType) {
         switch (actionType) {
             case action.ENTER_PURCHASE_SECTION: 
                 this.sticky(true);
