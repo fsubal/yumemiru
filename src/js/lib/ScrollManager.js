@@ -2,13 +2,12 @@ import $ from 'jquery';
 import { throttle } from 'lodash';
 
 import GlobalNavigation from '../lib/GlobalNavigation';
-import position from '../lib/ScrollPosition';
+import scrollPosition from '../lib/ScrollPosition';
 import action from '../lib/ScrollActionType';
 
 export default class ScrollManager {
     constructor() {
         this.THROTTLE_INTERVAL = 24;
-
         this.$root = $('html, body');
         this.globalNavigation = new GlobalNavigation();
     }
@@ -23,26 +22,22 @@ export default class ScrollManager {
     }
 
     updateByScroll(scrollTop) {
-        if (scrollTop > position.PURCHASE_SECTION__BOTTOM) {
-            this.globalNavigation.update(
-                action.PASS_PURCHASE_SECTION
-            );
-        } else if (scrollTop > position.PURCHASE_SECTION__TOP) {
-            this.globalNavigation.update(
-                action.ENTER_PURCHASE_SECTION
-            );
-        } else if (scrollTop > position.BROWSE_SECTION__TOP) {
-            this.globalNavigation.update(
-                action.ENTER_BROWSE_SECTION
-            );
-        } else if (scrollTop > position.HERO_IMAGE__BOTTOM) {
-            this.globalNavigation.update(
-                action.ENTER_STORY_SECTION
-            );
+        const position = scrollPosition.calc();
+        if (scrollTop > position.purchaseSection__Bottom) {
+            // 「購入する」の下端よりも下にいる時
+            this.globalNavigation.trigger(action.PASS_PURCHASE_SECTION);
+        } else if (scrollTop > position.purchaseSection__Top) {
+            // 「購入する」の中にいる時
+            this.globalNavigation.trigger(action.ENTER_PURCHASE_SECTION);
+        } else if (scrollTop > position.browseSection__Top) {
+            // 「試し読み」の中にいる時
+            this.globalNavigation.trigger(action.ENTER_BROWSE_SECTION);
+        } else if (scrollTop > position.heroImage__Bottom) {
+            // 「あらすじ」の中にいる時
+            this.globalNavigation.trigger(action.ENTER_STORY_SECTION);
         } else {
-            this.globalNavigation.update(
-                action.ENTER_HERO_IMAGE
-            );
+            // ヒーローイメージが出ている時
+            this.globalNavigation.trigger(action.ENTER_HERO_IMAGE);
         }
     }
 }

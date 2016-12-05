@@ -1,9 +1,8 @@
 import $ from 'jquery';
 import 'slick-carousel';
-import React from 'react';
-import h from 'react-hyperscript'
+import { Component, PropTypes, createElement as c } from 'react';
 
-export default class ComicViewerModal extends React.Component {
+export default class ComicViewerModal extends Component {
     constructor() {
 
     }
@@ -14,7 +13,11 @@ export default class ComicViewerModal extends React.Component {
 
     render() {
         return (
-            h('div', {}, [])
+            c('div', {}, [])
         );
     }
 }
+
+ComicViewerModal.propTypes = {
+
+};

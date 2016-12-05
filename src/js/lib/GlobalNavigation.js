@@ -13,15 +13,18 @@ export default class GlobalNavigation {
 
     init() {
         $menuItems.find('.story-section').on('click', () => {
-            this.scrollTo(position.HERO_IMAGE__BOTTOM);
+            const position = scrollPosition.calc();
+            this.scrollTo(position.heroImage__Bottom);
         });
 
         $menuItems.find('.browse-section').on('click', () => {
-            this.scrollTo(position.BROWSE_SECTION__TOP);
+            const position = scrollPosition.calc();
+            this.scrollTo(position.browseSection__Top);
         });
 
         $menuItems.find('.purchase-section').on('click', () => {
-            this.scrollTo(position.PURCHASE_SECTION__TOP);
+            const position = scrollPosition.calc();
+            this.scrollTo(position.purchaseSection__Top);
         });
     }
 
@@ -43,12 +46,12 @@ export default class GlobalNavigation {
         if (this.$menuContainer.hasClass('--hidden')) {
             this.$menuContainer.removeClass('--hidden');
         }
-
         this.$menuItems.removeClass('--chosen');
         this.$menuItems.eq(i).addClass('--chosen');
     }
 
-    update(actionType) {
+    // TODO: EventEmitter入れる
+    trigger(actionType) {
         switch (actionType) {
             case action.PASS_PURCHASE_SECTION:
                 this.hide();
