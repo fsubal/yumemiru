@@ -9,14 +9,12 @@ export default class IndexController {
         this.scrollManager = new ScrollManager();
         this.comicViewerModal = new ComicViewerModal();
         this.$modalContainer = $('#modal-container');
-    }
 
-    run () {
         // this.addEventSender();
     }
 
     addEventSender() {
-        $('.ga-send-event').on('click', () => {
+        $('.ga-send-event').on('click', (e) => {
             const { action, category, label } = e.currentTarget.dataset;
             this.gaClient.send({ action, category, label }); 
         });
