@@ -6,7 +6,9 @@
   "scripts": {
     "compile-js": "./node_modules/.bin/webpack --progress",
     "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl -o ./public/css/main.css -u autoprefixer-stylus",
-    "compile": "npm run compile-css && npm run compile-js"
+    "compile": "npm run compile-css && npm run compile-js",
+    "compress-image": "pngquant ./public/img/*.png --speed 1 --ext .png --force",
+    "release": "npm run compile-css && npm run compile-js --release && npm run compress-image"
   },
   "author": "Subal FUJIAKI",
   "license": "ISC",
@@ -21,6 +23,7 @@
     "classnames": "2.2.5",
     "css-loader": "0.26.1",
     "domready": "1.0.8",
+    "historyjs": "^1.8.0-b2",
     "jquery": "3.1.1",
     "key-mirror": "1.0.1",
     "lodash": "4.17.2",
