@@ -1,18 +1,18 @@
 @charset 'utf-8'
-@import 'normalize'
+@import 'reset'
 
 /* settings */
 @font-face
   font-family 'YuGothic B'
   src local(Yu Gothic Bold)
 
-font-weight-bold()
-	font-weight 500
-	font-family "'Helvetica Neue', Helvatica, Arial, YuGothic, 'YuGothic M', 'メイリオ', sans-serif"
+._font-weight-bold
+	font-weight 600
+	font-family 'Helvetica Neue', Helvatica, Arial, YuGothic, 'YuGothic B', 'メイリオ', sans-serif
 
-font-weight-normal()
+._font-weight-normal
 	font-weight normal
-	font-family "'Helvetica Neue', Helvatica, Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', sans-serif"
+	font-family 'Helvetica Neue', Helvatica, Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, 'メイリオ', Osaka, 'MS PGothic', sans-serif
 
 // responsive-setting
 iphone-5   = "screen and (max-width: 320px)"
@@ -20,20 +20,80 @@ smartphone = "screen and (max-width: 414px)"
 tablet     = "screen and (max-width: 768px)"
 pc         = "screen and (min-width: 769px)"
 
+// color
+black = #3A373B
+yellow = #F6A623
+skin = #FCF5E3
+beige = #E8C998
+brown = #BD6857
 
 /* elements */
 body
-	@include font-weight-normal;
+	@extend ._font-weight-normal;
 	position relative
+	color black
+
+h1
+	@extend ._font-weight-bold
+	font-size 1.8rem
+
+a
+	color currentColor
 
 .hero-image
 	display flex
 	position relative
 	padding 20px 10px
+	background-image url('../img/hero_image.png')
+	background-position left center
+	background-size cover
+	background-repeat no-repeat
 
-	.thumbnail
-		width 100px
+	.hero-image__tweet-button
+		position absolute
+		top 20px
+		right 10px
+
+	.hero-image__thumbnail
 		margin-right 15px
 
-	.description
+	.hero-image__description
 		flex 1
+		color white
+
+		.hero-image__description__logo
+			& > img
+				width 126px
+
+.global-navigation
+	background yellow
+	box-sizing border-box
+	& > ul
+		margin 0
+		list-style none
+		display flex
+		.menu-item
+			flex 1
+			@extend ._font-weight-bold
+			text-align center
+			&.--chosen
+				border-bottom 2px
+
+main
+	.story-section
+		padding 10px
+		background-color skin
+		h1
+			color yellow
+			margin-bottom 25px
+
+	.browse-section
+		background-color black
+		color white
+
+	.purchase-section
+		background-color beige
+		color white
+
+	footer
+		background-color brown

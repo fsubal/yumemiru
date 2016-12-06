@@ -16,21 +16,21 @@ export default class GlobalNavigation {
             const position = scrollPosition.calc();
             this.triggerScroll(position.heroImage__Bottom);
 
-            this.trigger(action.ENTER_STORY_SECTION);
+            this.emit(action.ENTER_STORY_SECTION);
         });
 
         this.$menuItems.find('.browse-section').on('click', () => {
             const position = scrollPosition.calc();
             this.triggerScroll(position.browseSection__Top);
 
-            this.trigger(action.ENTER_BROWSE_SECTION);
+            this.emit(action.ENTER_BROWSE_SECTION);
         });
 
         this.$menuItems.find('.purchase-section').on('click', () => {
             const position = scrollPosition.calc();
             this.triggerScroll(position.purchaseSection__Top);
 
-            this.trigger(action.ENTER_PURCHASE_SECTION);
+            this.emit(action.ENTER_PURCHASE_SECTION);
         });
     }
 

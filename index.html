@@ -7,9 +7,14 @@
 </head>
 <body>
     <header id="hero-image" class="hero-image">
-        <section class="thumbnail"></section>
-        <section class="description">
-            <p class="logo"><img src="./public/img/logo.png"></p>
+        <p class="hero-image__tweet-button">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
+        </p>
+        <section class="hero-image__thumbnail">
+            <img src="./public/img/cover.png">
+        </section>
+        <section class="hero-image__description">
+            <p class="hero-image__description__logo"><img src="./public/img/logo.png"></p>
             <p>C91 新刊 / NEW GAME! / 百合</p>
             <h1>夢見る少女じゃ<wbr>いられない</h1>
             <p>&yen;400</p>
@@ -87,6 +92,8 @@
         </footer>
     </main>
     <div id="modal-container"></div>
-    <script type="text/javascript" src="public/js/app.js"></script>
+
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./public/js/app.js"></script>
 </body>
 </html>

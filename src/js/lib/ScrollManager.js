@@ -8,7 +8,7 @@ import action from '../lib/ScrollActionType';
 export default class ScrollManager {
     constructor() {
         this.THROTTLE_INTERVAL = 24;
-        this.$root = $('html, body');
+        this.$document = $(document);
         this.globalNavigation = new GlobalNavigation();
 
         this.init();
@@ -16,9 +16,9 @@ export default class ScrollManager {
 
     init() {
         const { isAnimating } = document.body.dataset;
-        this.$root.on('scroll', throttle(e => {
+        this.$document.on('scroll', throttle(e => {
             if (!isAnimating) {
-                this.updateByScroll(this.$root.scrollTop());
+                this.updateByScroll(this.$document.scrollTop());
             }
         }, this.THROTTLE_INTERVAL));
     }
