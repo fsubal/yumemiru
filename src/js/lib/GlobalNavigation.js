@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import position from '../lib/ScrollPosition';
+import scrollPosition from '../lib/ScrollPosition';
 import action from '../lib/ScrollActionType';
 
 export default class GlobalNavigation {
@@ -12,21 +12,22 @@ export default class GlobalNavigation {
     }
 
     init() {
-        this.$menuItems.find('.story-section').on('click', () => {
+        this.$menuContainer.find('.story-section').on('click', () => {
             const position = scrollPosition.calc();
-            this.triggerScroll(position.heroImage__Bottom);
+            // NOTICE: スクロールアニメーションで向かう位置は、sticky判定のthresholdより僅かに大きくなければならない
+            this.triggerScroll(position.storySection__Top + 1);
 
             this.emit(action.ENTER_STORY_SECTION);
         });
 
-        this.$menuItems.find('.browse-section').on('click', () => {
+        this.$menuContainer.find('.browse-section').on('click', () => {
             const position = scrollPosition.calc();
             this.triggerScroll(position.browseSection__Top);
 
             this.emit(action.ENTER_BROWSE_SECTION);
         });
 
-        this.$menuItems.find('.purchase-section').on('click', () => {
+        this.$menuContainer.find('.purchase-section').on('click', () => {
             const position = scrollPosition.calc();
             this.triggerScroll(position.purchaseSection__Top);
 
@@ -54,7 +55,13 @@ export default class GlobalNavigation {
 
     renderChosen(i) {
         this.$menuItems.removeClass('--chosen');
-        this.$menuItems.eq(i).addClass('--chosen');
+        if (i >= 0) {
+            this.$menuItems.eq(i).addClass('--chosen');
+        }        
+    }
+
+    choseNothing() {
+        this.$menuItems.removeClass('--chosen');     
     }
 
     // TODO: EventEmitter入れる
@@ -72,8 +79,13 @@ export default class GlobalNavigation {
                 this.sticky(true);
                 this.renderChosen(0);
                 break;
+            case action.ENTER_GLOBAL_NAVIGATION: 
+                this.sticky(true);
+                this.renderChosen(0);
+                break;
             case action.ENTER_HERO_IMAGE: 
                 this.sticky(false);
+                this.choseNothing();
                 break;
         }
     }

@@ -14,6 +14,12 @@
 	font-weight normal
 	font-family 'Helvetica Neue', Helvatica, Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, 'メイリオ', Osaka, 'MS PGothic', sans-serif
 
+bg-image(path, x-position = center, y-position = center, size = cover)
+	background-image url(path)
+	background-repeat no-repeat
+	background-position x-position y-position
+	background-size size
+
 // responsive-setting
 iphone-5   = "screen and (max-width: 320px)"
 smartphone = "screen and (max-width: 414px)"
@@ -27,73 +33,146 @@ skin = #FCF5E3
 beige = #E8C998
 brown = #BD6857
 
+// variables
+global-navigation-height = 16px * 1.2 + 12px * 2
+global-navigation-z-index = 1000
+
 /* elements */
 body
 	@extend ._font-weight-normal;
 	position relative
 	color black
+	overflow-x hidden
 
 h1
 	@extend ._font-weight-bold
 	font-size 1.8rem
+	line-height 1.5
 
 a
 	color currentColor
 
 .hero-image
 	display flex
+	align-items center
 	position relative
-	padding 20px 10px
-	background-image url('../img/hero_image.png')
-	background-position left center
-	background-size cover
-	background-repeat no-repeat
+	padding 40px 15px 20px 15px
+	bg-image('../img/hero_image.png', left)
+	@media tablet
+		padding 40px 10px 15px 10px
 
 	.hero-image__tweet-button
 		position absolute
-		top 20px
+		top 10px
 		right 10px
 
 	.hero-image__thumbnail
 		margin-right 15px
+		& > img
+			@media smartphone
+				width 120px
 
 	.hero-image__description
 		flex 1
 		color white
 
 		.hero-image__description__logo
+			margin-bottom 10px
 			& > img
-				width 126px
+				width 192px
+				@media smartphone
+					width 128px
+
+		.hero-image__description__category
+			font-size 0.9rem
+			line-height 1.2
+			margin-bottom 15px
+
+		.hero-image__description__title
+			line-height 1
+			margin-bottom 10px
+			@media iphone-5
+				font-size 1.5rem
+
+		.hero-image__description__price
+			@extend ._font-weight-bold
+			margin-bottom 15px
+			font-size 1.4rem
+			@media tablet
+				font-size 1.3rem
+
+		.hero-image__description__text
+			font-size 0.9rem
+			line-height 1.5
 
 .global-navigation
 	background yellow
 	box-sizing border-box
+	&.--sticky
+		z-index global-navigation-z-index
+		width 100%
+		position fixed
+		top 0
+		left 0
+		+ main
+			position relative
+			top global-navigation-height
+
 	& > ul
 		margin 0
 		list-style none
 		display flex
 		.menu-item
 			flex 1
+			font-size 1.2rem
+			padding 12px 0
 			@extend ._font-weight-bold
 			text-align center
+			cursor pointer
 			&.--chosen
-				border-bottom 2px
+				border-bottom 2px solid black
 
 main
 	.story-section
-		padding 10px
+		padding 20px
 		background-color skin
 		h1
 			color yellow
 			margin-bottom 25px
+			@media tablet
+				font-size 1.5rem
+
+		p
+			line-height 1.7
+			font-size 0.9rem
+			& + p
+				margin-top 20px
+			&.story-section__note
+				font-size 0.8rem
+				margin-top 30px
 
 	.browse-section
 		background-color black
 		color white
+		h1
+			padding 20px
+		.book-container
+			bg-image('../img/book_open.png')
+			margin 0 auto
+			width 600px
+			height 600px * (908 / 1614)
+			@media tablet
+				width 400px
+				height 400px * (908 / 1614)
+			@media smartphone
+				width 95%
+				height 95vw * (908 / 1614)
 
 	.purchase-section
+		padding 20px
 		background-color beige
 		color white
 
 	footer
+		padding 20px
 		background-color brown

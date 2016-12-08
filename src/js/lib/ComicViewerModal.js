@@ -9,9 +9,17 @@ export default class ComicViewerModal {
     }
 
     init() {
-
+        this.preloadSampleImages();
     }
 
     render() {
+    }
+
+    preloadSampleImages() {
+        for (let i of [
+            1, 2, 3]) {
+            const image = new Image();
+            image.src = `../img/sample/0${i}.jpg`;
+        }
     }
 }

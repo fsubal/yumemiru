@@ -8,7 +8,7 @@
     "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl -o ./public/css/main.css -u autoprefixer-stylus",
     "compile": "npm run compile-css && npm run compile-js",
     "compress-image": "pngquant ./public/img/*.png --speed 1 --ext .png --force",
-    "release": "npm run compile-css && npm run compile-js --release && npm run compress-image"
+    "release": "npm run compile-css && ./node_modules/.bin/webpack --progress --release && npm run compress-image"
   },
   "author": "Subal FUJIAKI",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "classnames": "2.2.5",
     "css-loader": "0.26.1",
     "domready": "1.0.8",
+    "glob": "^7.1.1",
     "history": "4.4.1",
     "jquery": "3.1.1",
     "key-mirror": "1.0.1",

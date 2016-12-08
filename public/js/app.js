@@ -12771,6 +12771,7 @@
 
   var SCROLL_ACTION_TYPE = (0, _keyMirror2.default)({
       ENTER_HERO_IMAGE: null,
+      ENTER_GLOBAL_NAVIGATION: null,
       ENTER_STORY_SECTION: null,
       ENTER_BROWSE_SECTION: null,
       ENTER_PURCHASE_SECTION: null,
@@ -12797,14 +12798,18 @@
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   var $heroImage = (0, _jquery2.default)('#hero-image');
+  var $globalNavigation = (0, _jquery2.default)('#global-navigation');
+  var $storySection = (0, _jquery2.default)('#story-section');
   var $browseSection = (0, _jquery2.default)('#browse-section');
   var $purchaseSection = (0, _jquery2.default)('#purchase-section');
 
   var calc = function calc() {
       return {
           heroImage__Bottom: $heroImage.offset().top + $heroImage.outerHeight(),
-          browseSection__Top: $browseSection.offset().top,
-          purchaseSection__Top: $purchaseSection.offset().top,
+          globalNavigation__Top: $globalNavigation.offset().top,
+          storySection__Top: $storySection.offset().top - $globalNavigation.outerHeight(),
+          browseSection__Top: $browseSection.offset().top - $globalNavigation.outerHeight(),
+          purchaseSection__Top: $purchaseSection.offset().top - $globalNavigation.outerHeight(),
           purchaseSection__Bottom: $purchaseSection.offset().top + $purchaseSection.outerHeight()
       };
   };
@@ -13769,10 +13774,23 @@
 
       _createClass(ComicViewerModal, [{
           key: 'init',
-          value: function init() {}
+          value: function init() {
+              this.preloadSampleImages();
+          }
       }, {
           key: 'render',
           value: function render() {}
+      }, {
+          key: 'preloadSampleImages',
+          value: function preloadSampleImages() {
+              var _arr = [1, 2, 3];
+
+              for (var _i = 0; _i < _arr.length; _i++) {
+                  var i = _arr[_i];
+                  var image = new Image();
+                  image.src = '../img/sample/0' + i + '.jpg';
+              }
+          }
       }]);
 
       return ComicViewerModal;
@@ -13825,22 +13843,23 @@
           value: function init() {
               var _this = this;
 
-              this.$menuItems.find('.story-section').on('click', function () {
-                  var position = scrollPosition.calc();
-                  _this.triggerScroll(position.heroImage__Bottom);
+              this.$menuContainer.find('.story-section').on('click', function () {
+                  var position = _ScrollPosition2.default.calc();
+                  // NOTICE: スクロールアニメーションで向かう位置は、sticky判定のthresholdより僅かに大きくなければならない
+                  _this.triggerScroll(position.storySection__Top + 1);
 
                   _this.emit(_ScrollActionType2.default.ENTER_STORY_SECTION);
               });
 
-              this.$menuItems.find('.browse-section').on('click', function () {
-                  var position = scrollPosition.calc();
+              this.$menuContainer.find('.browse-section').on('click', function () {
+                  var position = _ScrollPosition2.default.calc();
                   _this.triggerScroll(position.browseSection__Top);
 
                   _this.emit(_ScrollActionType2.default.ENTER_BROWSE_SECTION);
               });
 
-              this.$menuItems.find('.purchase-section').on('click', function () {
-                  var position = scrollPosition.calc();
+              this.$menuContainer.find('.purchase-section').on('click', function () {
+                  var position = _ScrollPosition2.default.calc();
                   _this.triggerScroll(position.purchaseSection__Top);
 
                   _this.emit(_ScrollActionType2.default.ENTER_PURCHASE_SECTION);
@@ -13870,7 +13889,14 @@
           key: 'renderChosen',
           value: function renderChosen(i) {
               this.$menuItems.removeClass('--chosen');
-              this.$menuItems.eq(i).addClass('--chosen');
+              if (i >= 0) {
+                  this.$menuItems.eq(i).addClass('--chosen');
+              }
+          }
+      }, {
+          key: 'choseNothing',
+          value: function choseNothing() {
+              this.$menuItems.removeClass('--chosen');
           }
 
           // TODO: EventEmitter入れる
@@ -13891,8 +13917,13 @@
                       this.sticky(true);
                       this.renderChosen(0);
                       break;
+                  case _ScrollActionType2.default.ENTER_GLOBAL_NAVIGATION:
+                      this.sticky(true);
+                      this.renderChosen(0);
+                      break;
                   case _ScrollActionType2.default.ENTER_HERO_IMAGE:
                       this.sticky(false);
+                      this.choseNothing();
                       break;
               }
           }
@@ -13992,6 +14023,8 @@
           value: function init() {
               var _this = this;
 
+              this.updateByScroll(this.$document.scrollTop());
+
               var isAnimating = document.body.dataset.isAnimating;
 
               this.$document.on('scroll', (0, _lodash.throttle)(function (e) {
@@ -14004,7 +14037,6 @@
           key: 'updateByScroll',
           value: function updateByScroll(scrollTop) {
               var position = _ScrollPosition2.default.calc();
-              console.log(scrollTop);
               if (scrollTop > position.purchaseSection__Bottom) {
                   // 「購入する」の下端よりも下にいる時
                   this.globalNavigation.emit(_ScrollActionType2.default.PASS_PURCHASE_SECTION);
@@ -14014,9 +14046,12 @@
               } else if (scrollTop > position.browseSection__Top) {
                   // 「試し読み」の中にいる時
                   this.globalNavigation.emit(_ScrollActionType2.default.ENTER_BROWSE_SECTION);
-              } else if (scrollTop > position.heroImage__Bottom) {
+              } else if (scrollTop > position.storySection__Top) {
                   // 「あらすじ」の中にいる時
                   this.globalNavigation.emit(_ScrollActionType2.default.ENTER_STORY_SECTION);
+              } else if (scrollTop > position.globalNavigation__Top) {
+                  // メニューの中にいる時
+                  this.globalNavigation.emit(_ScrollActionType2.default.ENTER_GLOBAL_NAVIGATION);
               } else {
                   // ヒーローイメージが出ている時
                   this.globalNavigation.emit(_ScrollActionType2.default.ENTER_HERO_IMAGE);

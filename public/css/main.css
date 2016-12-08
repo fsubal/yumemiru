@@ -155,6 +155,7 @@ select {
 }
 ._font-weight-bold,
 h1,
+.hero-image .hero-image__description .hero-image__description__price,
 .global-navigation > ul .menu-item {
   font-weight: 600;
   font-family: 'Helvetica Neue', Helvatica, Arial, YuGothic, 'YuGothic B', 'メイリオ', sans-serif;
@@ -168,9 +169,11 @@ body {
 body {
   position: relative;
   color: #3a373b;
+  overflow-x: hidden;
 }
 h1 {
   font-size: 1.8rem;
+  line-height: 1.5;
 }
 a {
   color: currentColor;
@@ -179,20 +182,33 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
-  padding: 20px 10px;
+  padding: 40px 15px 20px 15px;
   background-image: url("../img/hero_image.png");
+  background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
-  background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+  .hero-image {
+    padding: 40px 10px 15px 10px;
+  }
 }
 .hero-image .hero-image__tweet-button {
   position: absolute;
-  top: 20px;
+  top: 10px;
   right: 10px;
 }
 .hero-image .hero-image__thumbnail {
   margin-right: 15px;
+}
+@media screen and (max-width: 414px) {
+  .hero-image .hero-image__thumbnail > img {
+    width: 120px;
+  }
 }
 .hero-image .hero-image__description {
   -webkit-box-flex: 1;
@@ -200,12 +216,58 @@ a {
           flex: 1;
   color: #fff;
 }
+.hero-image .hero-image__description .hero-image__description__logo {
+  margin-bottom: 10px;
+}
 .hero-image .hero-image__description .hero-image__description__logo > img {
-  width: 126px;
+  width: 192px;
+}
+@media screen and (max-width: 414px) {
+  .hero-image .hero-image__description .hero-image__description__logo > img {
+    width: 128px;
+  }
+}
+.hero-image .hero-image__description .hero-image__description__category {
+  font-size: 0.9rem;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+.hero-image .hero-image__description .hero-image__description__title {
+  line-height: 1;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 320px) {
+  .hero-image .hero-image__description .hero-image__description__title {
+    font-size: 1.5rem;
+  }
+}
+.hero-image .hero-image__description .hero-image__description__price {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 768px) {
+  .hero-image .hero-image__description .hero-image__description__price {
+    font-size: 1.3rem;
+  }
+}
+.hero-image .hero-image__description .hero-image__description__text {
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 .global-navigation {
   background: #f6a623;
   box-sizing: border-box;
+}
+.global-navigation.--sticky {
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.global-navigation.--sticky + main {
+  position: relative;
+  top: 43.2px;
 }
 .global-navigation > ul {
   margin: 0;
@@ -218,27 +280,72 @@ a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  font-size: 1.2rem;
+  padding: 12px 0;
   text-align: center;
+  cursor: pointer;
 }
 .global-navigation > ul .menu-item.--chosen {
-  border-bottom: 2px;
+  border-bottom: 2px solid #3a373b;
 }
 main .story-section {
-  padding: 10px;
+  padding: 20px;
   background-color: #fcf5e3;
 }
 main .story-section h1 {
   color: #f6a623;
   margin-bottom: 25px;
 }
+@media screen and (max-width: 768px) {
+  main .story-section h1 {
+    font-size: 1.5rem;
+  }
+}
+main .story-section p {
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+main .story-section p + p {
+  margin-top: 20px;
+}
+main .story-section p.story-section__note {
+  font-size: 0.8rem;
+  margin-top: 30px;
+}
 main .browse-section {
   background-color: #3a373b;
   color: #fff;
 }
+main .browse-section h1 {
+  padding: 20px;
+}
+main .browse-section .book-container {
+  background-image: url("../img/book_open.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: 0 auto;
+  width: 600px;
+  height: 337.54646840148695px;
+}
+@media screen and (max-width: 768px) {
+  main .browse-section .book-container {
+    width: 400px;
+    height: 225.03097893432465px;
+  }
+}
+@media screen and (max-width: 414px) {
+  main .browse-section .book-container {
+    width: 95%;
+    height: 53.4448574969021vw;
+  }
+}
 main .purchase-section {
+  padding: 20px;
   background-color: #e8c998;
   color: #fff;
 }
 main footer {
+  padding: 20px;
   background-color: #bd6857;
 }
