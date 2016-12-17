@@ -62,7 +62,7 @@ export default class ComicViewerModal {
     preloadSampleImages() {
         for (let i of [0, 1, 2, 3]) {
             const image = new Image();
-            image.src = `../public/img/sample/0${i}.png`;
+            image.src = `./public/img/sample/0${i}.png`;
         }
     }
 }
