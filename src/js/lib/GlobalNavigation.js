@@ -41,7 +41,7 @@ export default class GlobalNavigation {
         this.$root.animate({
             scrollTop: position
         }, this.SCROLL_DURATION, () => {
-            delete document.body.dataset.isAnimating;
+            document.body.dataset.isAnimating = '';
         });
     }
 
