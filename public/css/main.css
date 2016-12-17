@@ -537,13 +537,6 @@ main footer .footer__logo > img {
   left: 0;
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 .modal-container.--hidden {
   visibility: hidden;
@@ -577,9 +570,6 @@ main footer .footer__logo > img {
 }
 .modal-container .pages {
   width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 .modal-container .pages .slick-prev {
   right: 10px;
