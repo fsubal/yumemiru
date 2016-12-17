@@ -538,7 +538,7 @@ main footer .footer__logo > img {
   width: 100%;
   height: 100%;
 }
-.modal-container.--hidden {
+.modal-container.hidden {
   visibility: hidden;
 }
 .modal-container > header {
