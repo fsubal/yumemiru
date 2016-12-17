@@ -27,14 +27,14 @@ export default class ComicViewerModal {
         }.bind(this));
 
         this.$openButton.on('click', function() {
-            this.$modalContainer.removeClass('--hidden');
-            // $(document.body).removeClass('--locked');
+            this.$modalContainer.removeClass('hidden');
+            // $(document.body).removeClass('locked');
         }.bind(this));
     }
 
     close() {
-        this.$modalContainer.addClass('--hidden');
-        // $(document.body).addClass('--locked');
+        this.$modalContainer.addClass('hidden');
+        // $(document.body).addClass('locked');
     }
 
     initCarousel() {
