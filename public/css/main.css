@@ -188,10 +188,10 @@ a {
 a.hover {
   text-decoration: underline;
 }
-.--hoverable {
+.hoverable {
   cursor: pointer;
 }
-.--hoverable.hover {
+.hoverable.hover {
   opacity: 0.85;
 }
 .hero-image {
@@ -320,14 +320,14 @@ a.hover {
   background: #f6a623;
   box-sizing: border-box;
 }
-.global-navigation.--sticky {
+.global-navigation.sticky {
   z-index: 1000;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
 }
-.global-navigation.--sticky + main {
+.global-navigation.sticky + main {
   position: relative;
   top: 43.2px;
 }
@@ -347,7 +347,7 @@ a.hover {
   text-align: center;
   cursor: pointer;
 }
-.global-navigation > ul .global-navigation__menu-item.--chosen {
+.global-navigation > ul .global-navigation__menu-item.chosen {
   border-bottom: 2px solid #3a373b;
 }
 main .story-section {
