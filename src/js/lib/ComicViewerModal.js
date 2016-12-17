@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import intersection from 'lodash/intersection';
 
 import 'slick-carousel';
 import 'slick/slick.css'; 
@@ -30,15 +29,6 @@ export default class ComicViewerModal {
         this.$openButton.on('click', function() {
             this.$modalContainer.removeClass('--hidden');
             // $(document.body).removeClass('--locked');
-        }.bind(this));
-
-        var closableClass = ['pages', 'modal-container__header'];
-        this.$modalContainer.on('click', function(e) {
-            const classList = [].slice.call(e.target.classList);
-            if (intersection(classList, closableClass).length === 0) {
-                return;
-            }
-            this.close();
         }.bind(this));
     }
 
