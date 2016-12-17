@@ -47,21 +47,21 @@ export default class GlobalNavigation {
 
     sticky(shouldBeSticky) {
         if (shouldBeSticky) {
-            !this.$menuContainer.hasClass('--sticky') && this.$menuContainer.addClass('--sticky');
+            !this.$menuContainer.hasClass('sticky') && this.$menuContainer.addClass('sticky');
         } else {
-            this.$menuContainer.hasClass('--sticky') && this.$menuContainer.removeClass('--sticky');
+            this.$menuContainer.hasClass('sticky') && this.$menuContainer.removeClass('sticky');
         }
     }
 
     renderChosen(i) {
-        this.$menuItems.removeClass('--chosen');
+        this.$menuItems.removeClass('chosen');
         if (i >= 0) {
-            this.$menuItems.eq(i).addClass('--chosen');
+            this.$menuItems.eq(i).addClass('chosen');
         }        
     }
 
     choseNothing() {
-        this.$menuItems.removeClass('--chosen');     
+        this.$menuItems.removeClass('chosen');     
     }
 
     // TODO: EventEmitter入れる

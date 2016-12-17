@@ -25,7 +25,7 @@ export default class IndexController {
             $(this).removeClass('hover');
         });
 
-        $('.--hoverable').on('touchstart mouseenter', function() {
+        $('.hoverable').on('touchstart mouseenter', function() {
             $(this).addClass('hover');
         }).on('touchend mouseleave', function() {
             $(this).removeClass('hover');
