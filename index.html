@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>夢見る少女じゃいられない - NEW GAME! 八神コウ過去編本 / ☂Umbrellahead</title>
+    <link rel="stylesheet" href="./public/css/font-awesome.min.css">
     <link rel="stylesheet" href="./public/css/main.css">
 </head>
 <body>
@@ -11,10 +12,15 @@
             <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
         </p>
         <section class="hero-image__thumbnail">
-            <img src="./public/img/cover.png">
+            <div class="hero-image__thumbnail__body --hoverable js-open-carousel">
+                <img src="./public/img/cover.png" alt="夢見る少女じゃいられない">
+                <p class="hero-image__thumbnail__body">
+                    <i class="fa fa-search-plus"></i>
+                </p>
+            </div>
         </section>
         <section class="hero-image__description">
-            <p class="hero-image__description__logo"><img src="./public/img/logo.png"></p>
+            <p class="hero-image__description__logo"><img src="./public/img/logo.png" alt="Umbrellahead"></p>
             <p class="hero-image__description__category">C91 新刊 / NEW GAME! / 百合</p>
             <h1 class="hero-image__description__title">夢見る少女じゃ<wbr>いられない</h1>
             <p class="hero-image__description__price">&yen;400</p>
@@ -23,9 +29,9 @@
     </header>
     <nav id="global-navigation" class="global-navigation">
         <ul>
-            <li class="menu-item story-section">あらすじ</li>
-            <li class="menu-item browse-section">試し読み</li>
-            <li class="menu-item purchase-section">購入する</li>
+            <li class="global-navigation__menu-item story-section">あらすじ</li>
+            <li class="global-navigation__menu-item browse-section">試し読み</li>
+            <li class="global-navigation__menu-item purchase-section">購入する</li>
         </ul>
     </nav>
     <main>
@@ -47,10 +53,12 @@
         </section>
         <section id="browse-section" class="browse-section">
             <h1>試し読み</h1>
-            <div class="book-container">
+            <div class="book-container --hoverable js-open-carousel">
                 <div class="book-container__overlay">
-                    <p><img src=""></p>
-                    <p>冒頭3ページを試し読みする</p>
+                    <p class="book-container__overlay__icon">
+                        <i class="fa fa-search-plus"></i>
+                    </p>
+                    <p class="book-container__overlay__caption">冒頭3ページを試し読みする</p>
                 </div>
             </div>
         </section>
@@ -58,44 +66,55 @@
             <h1>購入する</h1>
             <section class="purchase-section__at-event">
                 <h1>イベント会場で購入する</h1>
+                <a href="https://webcatalog-free.circle.ms/Circle/13028706" target="_blank" class="--hoverable purchase-section__at-event__circle-cut">
+                    <img src="./public/img/circle_cut.png">
+                </a>
                 <p>
                     2016年12月30日（金）<br>
                     コミックマーケット91 2日目<br>
-                    東6ホール ト58b Umbrellahead<br>
+                    <strong>東6ホール ト58b Umbrellahead</strong>
                 </p>
                 <p>
-                    <a href="">&gt;&gt; Webカタログで見る（外部サイト）</a>
+                    <a href="https://webcatalog-free.circle.ms/Circle/13028706" target="_blank">&gt;&gt; Webカタログで見る（外部サイト）</a>
                 </p>
-                <p class="purchase-section__at-event__circle-cut">
-                    <img src="">
-                </p>
-                <section class="purchase-section__at-event__menu">
-                    <h1>おしながき</h1>
-                    <p>『夢見る少女じゃいられない』以外の当日の頒布物は<br> こちら（外部サイト）から確認できます。</p>
-                    <dl>
-                        <dt></dt>
-                        <dd></dd>
-                        <dt></dt>
-                        <dd></dd>
-                    </dl>
-                </section>
+                <br class="clearfix">
             </section>
             <section class="purchase-section__online">
-                <h1>通販で購入する<span>（外部サイト）</span></h1>
-                <p>
-                    <a href=""><img src=""></a>
-                </p>
-                <p>※ 通販でご購入の場合、商品の料金と別に配送料金がかかります。予めご了承ください</p>
+                <h1>通販で購入する</h1>
+                <p class="purchase-section__online__note">※ 冬コミ終了後にBOOTHでの販売を予定しています。<br><a href="https://umbrellahead.booth.pm/" target="_blank">&gt;&gt; Umbrellahead☂のBOOTHに行く</a></p>
             </section>
+
         </section>
         <footer>
-            <p><img src=""></p>
-            <p>author: <a href="">@f_subal</a></p>
+            <p class="footer__logo"><img src="./public/img/logo.png" alt="Umbrellahead"></p>
+            <p>author: <a href="https://twitter.com/f_subal" target="_blank">@f_subal</a></p>
         </footer>
     </main>
-    <div id="modal-container"></div>
+    <div class="modal-container --hidden">
+        <header class="modal-container__header">
+            <h1>夢見る少女じゃいられない</h1>
+            <p class="modal-container__close">
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+        <section class="pages" dir="rtl">
+            <div class="page">
+                <img src="./public/img/sample/00.png">
+            </div>
+            <div class="page">
+                <img src="./public/img/sample/01.png">
+            </div>
+            <div class="page">
+                <img src="./public/img/sample/02.png">
+            </div>
+            <div class="page">
+                <img src="./public/img/sample/03.png">
+            </div>
+        </section>
+    </div>
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./public/js/ga.js"></script>
     <script type="text/javascript" src="./public/js/app.js"></script>
 </body>
 </html>

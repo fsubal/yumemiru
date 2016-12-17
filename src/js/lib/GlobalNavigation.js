@@ -7,29 +7,29 @@ export default class GlobalNavigation {
         this.SCROLL_DURATION = 200;
         this.$root = $('html, body');
         this.$menuContainer = $('#global-navigation');
-        this.$menuItems = $('#global-navigation').find('.menu-item');
+        this.$menuItems = $('#global-navigation').find('.global-navigation__menu-item');
         this.init();
     }
 
     init() {
         this.$menuContainer.find('.story-section').on('click', () => {
-            const position = scrollPosition.calc();
+            const goal = scrollPosition.calc();
             // NOTICE: スクロールアニメーションで向かう位置は、sticky判定のthresholdより僅かに大きくなければならない
-            this.triggerScroll(position.storySection__Top + 1);
+            this.triggerScroll(goal.storySection__Top + 1);
 
             this.emit(action.ENTER_STORY_SECTION);
         });
 
         this.$menuContainer.find('.browse-section').on('click', () => {
-            const position = scrollPosition.calc();
-            this.triggerScroll(position.browseSection__Top);
+            const goal = scrollPosition.calc();
+            this.triggerScroll(goal.browseSection__Top + 1);
 
             this.emit(action.ENTER_BROWSE_SECTION);
         });
 
         this.$menuContainer.find('.purchase-section').on('click', () => {
-            const position = scrollPosition.calc();
-            this.triggerScroll(position.purchaseSection__Top);
+            const goal = scrollPosition.calc();
+            this.triggerScroll(goal.purchaseSection__Top + 1);
 
             this.emit(action.ENTER_PURCHASE_SECTION);
         });

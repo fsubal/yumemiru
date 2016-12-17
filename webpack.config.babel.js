@@ -25,12 +25,17 @@ export default {
   ],
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.css'],
+    alias: {
+			slick: path.resolve(__dirname, 'node_modules/slick-carousel/slick/'),
+		},
   },
 
   module: {
     loaders: [
       { test: /\.js$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
+      { test: /\.css$/, loader: 'style-loader!css-loader!' },
+      { test: /\.(eot|svg|woff|ttf|gif)$/, loader: 'url-loader' },
     ],
   },
 };
