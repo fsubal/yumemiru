@@ -35,7 +35,7 @@ export default class ComicViewerModal {
 
         this.$closeButton.on('click', function() {
             const { state } = this.history.location;
-            state.isInitial ? this.history.push('', {}) : this.history.go(-1);
+            state.isInitial ? this.history.push('#/', {}) : this.history.go(-1);
         }.bind(this));
     }
 
@@ -55,7 +55,7 @@ export default class ComicViewerModal {
         if (initialState) {
             this.history.push(`#/${initialState}`, { isInitial : true });
         } else {
-            this.history.push('', {});
+            this.history.push('#/', {});
         }
     }
 
