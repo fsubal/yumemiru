@@ -579,18 +579,24 @@ main footer .footer__logo > img {
   width: 100%;
 }
 .modal-container .pages .slick-prev {
-  right: 10px;
+  right: 0;
+  height: 100%;
+  padding: 0 5px;
+  background-color: rgba(58,55,59,0.3);
   z-index: 2001;
 }
 .modal-container .pages .slick-prev::before {
-  color: #3a373b;
+  color: #fff;
 }
 .modal-container .pages .slick-next {
-  left: 10px;
+  left: 0;
+  height: 100%;
+  padding: 0 5px;
+  background-color: rgba(58,55,59,0.3);
   z-index: 2001;
 }
 .modal-container .pages .slick-next::before {
-  color: #3a373b;
+  color: #fff;
 }
 .modal-container .pages .slick-dots {
   bottom: 20px;
