@@ -50,7 +50,7 @@ export default class ComicViewerModal {
         });
 
         const initialState = takeRight(location.href.split('/'));
-        this.history.push(initialState);
+        this.history.push(initialState ? `/yumemiru/${initialState}` : '');
     }
 
     open() {
