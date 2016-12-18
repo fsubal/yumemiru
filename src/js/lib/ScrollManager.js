@@ -9,7 +9,7 @@ import GoogleAnalyticsClient from '../lib/GoogleAnalyticsClient';
 
 export default class ScrollManager {
     constructor() {
-        this.THROTTLE_INTERVAL = 24;
+        this.THROTTLE_INTERVAL = 12;
         this.$document = $(document);
         this.globalNavigation = new GlobalNavigation();
         this.gaClient = new GoogleAnalyticsClient();
