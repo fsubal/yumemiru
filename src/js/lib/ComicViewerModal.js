@@ -54,9 +54,9 @@ export default class ComicViewerModal {
 
         const initialState = takeRight(location.href.split('/'));
         if (initialState) {
-            this.history.push(`#/${initialState}`, { isInitial : true });
+            this.history.replace(`#/${initialState}`, { isInitial : true });
         } else {
-            this.history.push('#/', {});
+            this.history.replace('#/', {});
         }
     }
 
