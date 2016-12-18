@@ -7,7 +7,7 @@
     "compile-js": "./node_modules/.bin/webpack --progress",
     "compile-css": "./node_modules/.bin/stylus ./src/styl/main.styl -o ./public/css/main.css -u autoprefixer-stylus",
     "compile": "npm run compile-css && npm run compile-js",
-    "compress-image": "pngquant ./public/img/*.png --speed 1 --ext .png --force",
+    "compress-image": "pngquant ./public/img/*.png ./public/img/*/*.png --speed 1 --ext .png --force",
     "release": "npm run compile-css && ./node_modules/.bin/webpack --progress --release && npm run compress-image"
   },
   "author": "Subal FUJIAKI",

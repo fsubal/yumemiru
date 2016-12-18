@@ -37,6 +37,6 @@ export default class IndexController {
         /* $('[href*="pixiv"]').on('click', (e) => {
             this.gaClient.goToPixivSample(e.currentTarget.dataset.bookName)
         }); */
-        $('[href^=booth]').on('click', () => this.gaClient.goToBooth());
+        $('[href*=booth]').on('click', () => this.gaClient.goToBooth());
     }
 }

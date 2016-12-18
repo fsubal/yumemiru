@@ -41,7 +41,7 @@ export default class ComicViewerModal {
     }
 
     initHistory() {
-        this.destructHistory = this.history.listen((location, action) => {
+        this.history.listen((location, _) => {
             switch(location.hash) {
                 case '#/preview':
                     this.open();
