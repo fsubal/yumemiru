@@ -320,6 +320,7 @@ main
 
 .modal-container
 	z-index modal-container-z-index
+	transition opacity 0.2 ease
 	position fixed
 	background-color rgba(black, 0.5)
 	top 0
@@ -328,6 +329,7 @@ main
 	height 100%
 	&.hidden
 		visibility hidden
+		opacity 0
 
 	& > header
 		width 100%

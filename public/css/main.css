@@ -535,6 +535,8 @@ main footer .footer__logo > img {
 }
 .modal-container {
   z-index: 2000;
+  -webkit-transition: opacity 0.2 ease;
+  transition: opacity 0.2 ease;
   position: fixed;
   background-color: rgba(58,55,59,0.5);
   top: 0;
@@ -544,6 +546,7 @@ main footer .footer__logo > img {
 }
 .modal-container.hidden {
   visibility: hidden;
+  opacity: 0;
 }
 .modal-container > header {
   width: 100%;
