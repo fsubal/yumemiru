@@ -579,18 +579,16 @@ main footer .footer__logo > img {
   width: 100%;
 }
 .modal-container .pages .slick-prev {
-  right: 0;
+  right: 5px;
   height: 100%;
-  padding: 0 10px;
   z-index: 2001;
 }
 .modal-container .pages .slick-prev::before {
   color: #fff;
 }
 .modal-container .pages .slick-next {
-  left: 0;
+  left: 5px;
   height: 100%;
-  padding: 0 10px;
   z-index: 2001;
 }
 .modal-container .pages .slick-next::before {
