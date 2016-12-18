@@ -35,7 +35,8 @@ export default class ComicViewerModal {
 
         this.$closeButton.on('click', function() {
             const { state } = this.history.location;
-            state.isInitial ? this.history.push('#/', {}) : this.history.go(-1);
+            // FIXME
+            state.isInitial ? this.history.push('/yumemiru/#/', {}) : this.history.go(-1);
         }.bind(this));
     }
 
