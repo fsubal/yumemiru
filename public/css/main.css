@@ -535,8 +535,8 @@ main footer .footer__logo > img {
 }
 .modal-container {
   z-index: 2000;
-  -webkit-transition: opacity 0.2 ease;
-  transition: opacity 0.2 ease;
+  -webkit-transition: all 0.2 ease;
+  transition: all 0.2 ease;
   position: fixed;
   background-color: rgba(58,55,59,0.5);
   top: 0;
