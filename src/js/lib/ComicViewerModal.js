@@ -30,7 +30,7 @@ export default class ComicViewerModal {
 
     addEventToButton() {
         this.$openButton.on('click', function() {
-            this.history.push('./preview', {});
+            this.history.push('/yumemiru/preview', {});
         }.bind(this));
 
         this.$closeButton.on('click', function() {
@@ -41,7 +41,7 @@ export default class ComicViewerModal {
     initHistory() {
         this.destructHistory = this.history.listen((location, action) => {
             switch(location.pathname) {
-                case './preview': 
+                case '/yumemiru/preview': 
                     this.open();
                     break;
                 default:
