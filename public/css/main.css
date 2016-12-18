@@ -584,7 +584,8 @@ main footer .footer__logo > img {
   z-index: 2001;
 }
 .modal-container .pages .slick-prev::before {
-  color: #fff;
+  color: #f6a623;
+  text-shadow: 0 0 4px #fff;
 }
 .modal-container .pages .slick-next {
   left: 5px;
@@ -592,7 +593,8 @@ main footer .footer__logo > img {
   z-index: 2001;
 }
 .modal-container .pages .slick-next::before {
-  color: #fff;
+  color: #f6a623;
+  text-shadow: 0 0 4px #fff;
 }
 .modal-container .pages .slick-dots {
   bottom: 20px;
