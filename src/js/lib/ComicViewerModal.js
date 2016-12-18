@@ -30,7 +30,7 @@ export default class ComicViewerModal {
 
     addEventToButton() {
         this.$openButton.on('click', function() {
-            this.history.push('/yumemiru/#/preview', {});
+            this.history.push('#/preview', {});
         }.bind(this));
 
         this.$closeButton.on('click', function() {
@@ -40,17 +40,18 @@ export default class ComicViewerModal {
 
     initHistory() {
         this.destructHistory = this.history.listen((location, action) => {
-            switch(location.pathname) {
-                case '/yumemiru/#/preview':
+            switch(location.hash) {
+                case '#/preview':
                     this.open();
                     break;
                 default:
                     this.close();
+                    break;
             };
         });
 
         const initialState = takeRight(location.href.split('/'));
-        this.history.push(initialState ? `/yumemiru/#/${initialState}` : '');
+        this.history.push(initialState ? `#/${initialState}` : '');
     }
 
     open() {
