@@ -45,7 +45,7 @@ export default class ComicViewerModal {
         this.$modalContainer.addClass('hidden');
         this.scrollUnlock();
         this.gaClient.closeMangaViewer();
-        this.$pages.slickGoTo(0, /* withoutAnimation = */ true);
+        this.slick.slick('slickGoTo', 0, /* withoutAnimation = */ true);
     }
 
     scrollLock() {
@@ -69,7 +69,7 @@ export default class ComicViewerModal {
     }
 
     initCarousel() {
-        this.$pages.slick({
+        this.slick = this.$pages.slick({
             dots: true,
             arrows: true,
             slidesToShow: 1,
