@@ -64,7 +64,7 @@ export default class ComicViewerModal {
             top     : ''
         });
 
-        $(document).scrollTo(this.scrollTop);
+        $(document).scrollTop(this.scrollTop);
     }
 
     initCarousel() {
