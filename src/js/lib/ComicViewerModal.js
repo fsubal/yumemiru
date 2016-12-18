@@ -30,11 +30,11 @@ export default class ComicViewerModal {
 
     addEventToButton() {
         this.$openButton.on('click', function() {
-            this.open();
+            this.history.push('/preview', {});
         }.bind(this));
 
         this.$closeButton.on('click', function() {
-            this.close();
+            this.history.go(-1);
         }.bind(this));
     }
 
@@ -42,12 +42,10 @@ export default class ComicViewerModal {
         this.destructHistory = this.history.listen((location, action) => {
             switch(location.pathname) {
                 case '/preview': 
-                    this.$modalContainer.removeClass('hidden');
-                    this.scrollLock();
+                    this.open();
                     break;
                 default:
-                    this.$modalContainer.addClass('hidden');
-                    this.scrollUnlock();
+                    this.close();
             };
         });
 
@@ -59,7 +57,6 @@ export default class ComicViewerModal {
         this.$modalContainer.removeClass('hidden');
         this.scrollLock();
         this.gaClient.openMangaViewer();
-        this.history.push('/preview', {});
     }
 
     close() {
@@ -67,7 +64,6 @@ export default class ComicViewerModal {
         this.scrollUnlock();
         this.gaClient.closeMangaViewer();
         this.slick.slick('slickGoTo', 0, /* withoutAnimation = */ true);
-        history.go(-1);
     }
 
     scrollLock() {
