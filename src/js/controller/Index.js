@@ -33,14 +33,10 @@ export default class IndexController {
     }
 
     addEventSender() {
-        // $('.').on('click', () => this.gaClient.openMangaViewer());
-        // $('.').on('click', () => this.gaClient.closeMangaViewer());
-
         $('[href*="webcatalog"]').on('click', () => this.gaClient.goToWebCatalog());
-
-        $('[href*="pixiv"]').on('click', (e) => {
+        /* $('[href*="pixiv"]').on('click', (e) => {
             this.gaClient.goToPixivSample(e.currentTarget.dataset.bookName)
-        });
+        }); */
         $('[href^=booth]').on('click', () => this.gaClient.goToBooth());
     }
 }

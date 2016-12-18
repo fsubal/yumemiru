@@ -5,6 +5,8 @@ import 'slick/slick.css';
 import 'slick/slick-theme.css'; 
 import browserHistory from 'history/createBrowserHistory';
 
+import GoogleAnalyticsClient from '../lib/GoogleAnalyticsClient';
+
 export default class ComicViewerModal {
     constructor() {
         this.$modalContainer = $('.modal-container');
@@ -15,6 +17,8 @@ export default class ComicViewerModal {
         this.$openButton = $('.js-open-carousel');
 
         this.history = browserHistory();
+        this.gaClient = new GoogleAnalyticsClient();
+
         this.preloadSampleImages();
 
         this.addEventToButton();
@@ -22,19 +26,45 @@ export default class ComicViewerModal {
     }
 
     addEventToButton() {
+        this.$openButton.on('click', function() {
+            this.open();
+        }.bind(this));
+
         this.$closeButton.on('click', function() {
             this.close();
         }.bind(this));
+    }
 
-        this.$openButton.on('click', function() {
-            this.$modalContainer.removeClass('hidden');
-            // $(document.body).removeClass('locked');
-        }.bind(this));
+    open() {
+        this.$modalContainer.removeClass('hidden');
+        this.scrollLock();
+        this.gaClient.openMangaViewer();
     }
 
     close() {
         this.$modalContainer.addClass('hidden');
-        // $(document.body).addClass('locked');
+        this.scrollUnlock();
+        this.gaClient.closeMangaViewer();
+    }
+
+    scrollLock() {
+        this.scrollTop = $(document).scrollTop();
+
+        $(document.body).css({
+            position: 'fixed',
+            width   : '100%',
+            top     : -1 * this.scrollTop
+        });
+    }
+
+    scrollUnlock() {
+        $(document.body).css({
+            position: '',
+            width   : '',
+            top     : ''
+        });
+
+        $(document).scrollTo(this.scrollTop);
     }
 
     initCarousel() {
