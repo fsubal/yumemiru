@@ -34,7 +34,8 @@ export default class ComicViewerModal {
         }.bind(this));
 
         this.$closeButton.on('click', function() {
-            this.history.go(-1);
+            const { state } = this.history.location;
+            state.isInitial ? this.history.push('', {}) : this.history.go(-1);
         }.bind(this));
     }
 
@@ -51,7 +52,11 @@ export default class ComicViewerModal {
         });
 
         const initialState = takeRight(location.href.split('/'));
-        this.history.push(initialState ? `#/${initialState}` : '');
+        if (initialState) {
+            this.history.push(`#/${initialState}`, { isInitial : true });
+        } else {
+            this.history.push('', {});
+        }
     }
 
     open() {
