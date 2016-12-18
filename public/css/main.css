@@ -581,8 +581,7 @@ main footer .footer__logo > img {
 .modal-container .pages .slick-prev {
   right: 0;
   height: 100%;
-  padding: 0 5px;
-  background-color: rgba(58,55,59,0.3);
+  padding: 0 10px;
   z-index: 2001;
 }
 .modal-container .pages .slick-prev::before {
@@ -591,8 +590,7 @@ main footer .footer__logo > img {
 .modal-container .pages .slick-next {
   left: 0;
   height: 100%;
-  padding: 0 5px;
-  background-color: rgba(58,55,59,0.3);
+  padding: 0 10px;
   z-index: 2001;
 }
 .modal-container .pages .slick-next::before {
