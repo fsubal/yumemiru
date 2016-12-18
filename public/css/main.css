@@ -553,7 +553,6 @@ main footer .footer__logo > img {
   box-sizing: border-box;
   background-color: rgba(58,55,59,0.5);
   position: relative;
-  padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -568,10 +567,12 @@ main footer .footer__logo > img {
   color: #fff;
   font-size: 1rem;
   font-weight: normal;
+  padding: 10px 0 10px 20px;
 }
 .modal-container > header .modal-container__close {
   width: 1rem;
   height: 1rem;
+  padding: 10px 20px;
   color: #fff;
   cursor: pointer;
 }

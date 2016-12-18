@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import takeRight from 'lodash/takeRight';
 
 import 'slick-carousel';
 import 'slick/slick.css'; 
@@ -23,6 +24,8 @@ export default class ComicViewerModal {
 
         this.addEventToButton();
         this.initCarousel();
+
+        this.initHistory();
     }
 
     addEventToButton() {
@@ -35,10 +38,28 @@ export default class ComicViewerModal {
         }.bind(this));
     }
 
+    initHistory() {
+        this.destructHistory = this.history.listen((location, action) => {
+            switch(location.pathname) {
+                case '/preview': 
+                    this.$modalContainer.removeClass('hidden');
+                    this.scrollLock();
+                    break;
+                default:
+                    this.$modalContainer.addClass('hidden');
+                    this.scrollUnlock();
+            };
+        });
+
+        const initialState = takeRight(location.href.split('/'));
+        this.history.push(initialState);
+    }
+
     open() {
         this.$modalContainer.removeClass('hidden');
         this.scrollLock();
         this.gaClient.openMangaViewer();
+        this.history.push('/preview', {});
     }
 
     close() {
@@ -46,6 +67,7 @@ export default class ComicViewerModal {
         this.scrollUnlock();
         this.gaClient.closeMangaViewer();
         this.slick.slick('slickGoTo', 0, /* withoutAnimation = */ true);
+        history.go(-1);
     }
 
     scrollLock() {
